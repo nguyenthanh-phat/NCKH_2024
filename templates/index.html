@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Hỗ trợ học CTDL & GT</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+
+        <!-- Thanh lựa chọn chế độ -->
+        <div class="mode-selection">
+            <button id="introMode" class="mode-button">Lời mở đầu</button> <!-- Nút "Lời mở đầu" ở phía trái -->
+            <div class="other-modes">
+                <button id="studyWithAI" class="mode-button">Học với AI</button>
+                <button id="grading" class="mode-button">Chấm điểm</button>
+            </div>
+        </div>
+        
+
+        <!-- Giao diện lời mở đầu -->
+        <div id="introInterface" class="interface">
+            <h2>Giới thiệu về Hệ thống</h2>
+            <p>
+                Đây là phần giới thiệu của hệ thống, nơi bạn có thể tìm hiểu thêm về cách thức hoạt động của AI trong việc hỗ trợ học Cấu trúc Dữ liệu và Giải thuật. Bạn có thể sử dụng phần này để hiểu rõ hơn về cách chúng tôi hỗ trợ bạn trong việc học lập trình.
+            </p>
+            <p>
+                Chọn một trong các chế độ khác để bắt đầu học với AI hoặc chấm điểm bài tập.
+            </p>
+        </div>
+
+        <!-- Giao diện học với AI -->
+        <div id="studyWithAIInterface" class="interface" style="display: none;">
+            <div class="chat-area">
+                <div class="chat-messages" id="messageArea"></div>
+                <div class="chat-input">
+                    <div class="input-group">
+                        <label for="uploadFile">Tải lên file:</label>
+                        <input type="file" id="uploadFile" accept=".py,image/*" placeholder="Chọn file...">
+                    </div>
+                    <textarea id="userInput" class="code-input" placeholder="Nhập đoạn code Python hoặc câu hỏi của bạn..."></textarea>
+                    <button id="sendButton">Gửi</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Giao diện chấm điểm -->
+        <div id="gradingInterface" class="interface" style="display: none;">
+            <div class="grading-area">
+                <h2>Chấm điểm</h2>
+                <div class="file-upload">
+                    <label for="gradingFile">Tải lên bài kiểm tra (file .py):</label>
+                    <input type="file" id="gradingFile" accept=".py">
+                </div>
+
+                <div class="test-case">
+                    <label for="testCase">Tạo Test Case:</label>
+                    <textarea id="testCase" placeholder="Nhập test case của bạn (ví dụ: assert func() == expected_result)"></textarea>
+                </div>
+
+                <div class="grading-result">
+                    <button id="submitGrading">Chấm điểm</button>
+                    <div id="gradingResponseArea" class="response-area">
+                        <!-- Phản hồi chấm điểm sẽ được hiển thị ở đây -->
+                    </div>
+                    <div id="totalScore">Tổng điểm: <span id="totalPoints">0</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
